@@ -5,7 +5,5 @@ This repository contains the backend API for my personal website, built using **
 The API provides various functionalities for managing content and services on the site, offering a robust and scalable solution for the backend infrastructure.
 
 ## Technologies Used
-<center>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/spring/spring-original-wordmark.svg" title="Spring" alt="Spring" width=100 height=100/>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/gradle/gradle-original-wordmark.svg" title="Gradle" alt="Gradle" width=100 height=100/>
-</center>
+<center>![Static Badge](https://img.shields.io/badge/Spring%20Boot-3.5.5-lightgreen?style=for-the-badge&logo=springboot&logoColor=lightgreen)</center>
+<center></center>![Static Badge](https://img.shields.io/badge/Gradle-8.10.2-blue?style=for-the-badge&logo=gradle&logoColor=blue)</center>
