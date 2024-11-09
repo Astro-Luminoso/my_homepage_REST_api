@@ -6,4 +6,4 @@ The API provides various functionalities for managing content and services on th
 
 ## Technologies Used
 
-<img src="https://github.com/devicons/devicon/blob/master/icons/spring/spring-original-wordmark.svg"/>
+<img src="https://github.com/devicons/devicon/blob/master/icons/spring/spring-original-wordmark.svg" title="Spring" alt="Spring" width=100 height=100/>
