@@ -36,7 +36,7 @@ TBD
 
 ## Repository Rules
 
-There are some rules to run this repository even if the onwer of this repository is the only one the contributer. See [Repository Rules](wiki/Repository-Policies-and-Rules).
+There are some rules to run this repository even if the onwer of this repository is the only one the contributer. See [Repository Rules](https://github.com/beuri97/my_homepage_REST_api/wiki/Repository-Policies-and-Rules).
 
 
 ## Copy Rights
