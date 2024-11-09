@@ -5,5 +5,7 @@ This repository contains the backend API for my personal website, built using **
 The API provides various functionalities for managing content and services on the site, offering a robust and scalable solution for the backend infrastructure.
 
 ## Technologies Used
-
-<img src="https://github.com/devicons/devicon/blob/master/icons/spring/spring-original-wordmark.svg" title="Spring" alt="Spring" width=100 height=100/>
+<center>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/spring/spring-original-wordmark.svg" title="Spring" alt="Spring" width=100 height=100/>
+  <img src="https://github.com/devicons/devicon/blob/master/icons/gradle/gradle-original-wordmark.svg" title="Gradle" alt="Gradle" width=100 height=100/>
+</center>
