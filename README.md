@@ -37,3 +37,15 @@ TBD
 ## Repository Rules
 
 There are some rules to run this repository even if the onwer of this repository is the only one the contributer. See [Repository Rules]().
+
+
+## Copy Rights
+
+Copyright © [2024] [HanByeol Yang]. All rights reserved.
+
+As GitHub 
+
+This software and its associated documentation may not be reproduced, distributed, modified, or used in any form or by any means—electronic, mechanical, photocopying, recording, or otherwise—without the prior written permission of the copyright holder, except as provided by applicable law.
+
+According to GitHub's documentation, if no license is provided, the repository will default to the terms of copyright law. For more details, please refer to this [link](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository#choosing-the-right-license).
+
