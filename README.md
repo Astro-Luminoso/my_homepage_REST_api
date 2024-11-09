@@ -41,7 +41,7 @@ There are some rules to run this repository even if the onwer of this repository
 
 ## Copy Rights
 
-Copyright © [2024] [HanByeol Yang]. All rights reserved.
+Copyright © 2024 HanByeol Yang. All rights reserved.
 
 As GitHub 
 
