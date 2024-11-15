@@ -1,17 +1,14 @@
 package me.h_yang.my_homepage.repository;
 
-import me.h_yang.my_homepage.entity.Authority;
-import me.h_yang.my_homepage.entity.User;
+import me.h_yang.my_homepage.entity.Client;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * Repository interface for the User entity
  */
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface ClientRepository extends CrudRepository<Client, Long> {
 
     /**
      * Find all users by ID
@@ -19,7 +16,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
      * @param id user Id
      * @return User object
      */
-    User findById(long id);
+    Client findById(long id);
 
 
     /**
@@ -28,7 +25,14 @@ public interface UserRepository extends CrudRepository<User, Long> {
      * @param email user email
      * @return User object
      */
-    User findByEmail(String email);
+    Client findByEmail(String email);
 
 
+    /**
+     * Find all users by user email
+     *
+     * @param email user email
+     * @return true if the email is already exists, false otherwise
+     */
+    Boolean existsByEmail(String email);
 }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class User {
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class User {
 
 
     // JPA empty constructor
-    protected User() {}
+    protected Client() {}
 
     /**
      * Constructor for a user
@@ -42,7 +42,7 @@ public class User {
      * @param lastName the last name of the user
      * @param password the password of the user
      */
-    public User(String email, String firstName, String lastName, String password) {
+    public Client(String email, String firstName, String lastName, String password) {
 
         this.email = email;
         this.firstName = firstName;

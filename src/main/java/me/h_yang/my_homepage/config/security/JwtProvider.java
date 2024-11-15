@@ -1,7 +1,6 @@
 package me.h_yang.my_homepage.config.security;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.security.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +24,8 @@ public class JwtProvider {
 
     public String generateToken(String email) {
         return Jwts.builder()
+                .header().type("JWT")
+                .and()
                 .subject(email)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expireTime))

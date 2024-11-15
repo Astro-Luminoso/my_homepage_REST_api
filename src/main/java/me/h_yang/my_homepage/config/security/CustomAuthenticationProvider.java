@@ -1,9 +1,8 @@
 package me.h_yang.my_homepage.config.security;
 
-import me.h_yang.my_homepage.service.UserService;
+import me.h_yang.my_homepage.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Component;
@@ -11,13 +10,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
-    private UserService userService;
+    private ClientService clientService;
     private JwtProvider jwtProvider;
 
     @Autowired
-    public CustomAuthenticationProvider (UserService userService, JwtProvider jwtProvider) {
+    public CustomAuthenticationProvider (ClientService clientService, JwtProvider jwtProvider) {
         super();
-        this.userService = userService;
+        this.clientService = clientService;
         this.jwtProvider = jwtProvider;
     }
 
