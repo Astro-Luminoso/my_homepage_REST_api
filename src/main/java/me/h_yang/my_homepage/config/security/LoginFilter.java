@@ -26,7 +26,6 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     public LoginFilter(AuthenticationProvider authenticationProvider, JwtUtilProvider jwtUtilProvider) {
         this.authenticationProvider = authenticationProvider;
         this.jwtUtilProvider = jwtUtilProvider;
-        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/api/login", "POST"));
     }
 
     /**
