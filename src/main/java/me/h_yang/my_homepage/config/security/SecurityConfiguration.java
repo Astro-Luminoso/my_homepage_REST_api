@@ -22,10 +22,12 @@ public class SecurityConfiguration {
 
 
     private final AuthenticationConfiguration authenticationConfiguration;
+    private final JwtUtilProvider jwtUtilProvider;
 
 
-    public SecurityConfiguration (AuthenticationConfiguration authenticationConfiguration) {
+    public SecurityConfiguration (AuthenticationConfiguration authenticationConfiguration, JwtUtilProvider jwtUtilProvider) {
         this.authenticationConfiguration = authenticationConfiguration;
+        this.jwtUtilProvider = jwtUtilProvider;
     }
 
     @Bean
@@ -69,7 +71,7 @@ public class SecurityConfiguration {
         http.securityMatcher("h2-console/**").headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
         http
-                .addFilterAt(new LoginFilter(authManager(authenticationConfiguration)), UsernamePasswordAuthenticationFilter.class);
+                .addFilterAt(new LoginFilter(authManager(authenticationConfiguration), jwtUtilProvider), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

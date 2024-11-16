@@ -12,15 +12,23 @@ import java.util.Date;
 @Component
 public class JwtUtilProvider {
 
-    @Value("${jwt.secret}")
-    private String secret;
+    private final SecretKey secret;
+    private final long expireTime;
 
-    @Value("${jwt.expire-time}")
-    private long expireTime;
+    public JwtUtilProvider (@Value("${jwt.secret}") String secret, @Value("${jwt.expire-time}") long expireTime) {
+        this.secret = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS512.key().build().getAlgorithm());
+        this.expireTime = expireTime;
+    }
 
-    private SecretKey getSecretKey() {
 
-        return new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS512.key().build().getAlgorithm());
+    public String getEmail(String token) {
+
+        return Jwts.parser().verifyWith(secret).build().parseSignedClaims(token).getPayload().get("email", String.class);
+    }
+
+    public boolean isExpired(String token) {
+
+        return Jwts.parser().verifyWith(secret).build().parseSignedClaims(token).getPayload().get("exp", Date.class).before(new Date());
     }
 
     public String generateToken(String email) {
@@ -30,7 +38,7 @@ public class JwtUtilProvider {
                 .subject(email)
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis() + expireTime))
-                .signWith(getSecretKey())
+                .signWith(this.secret)
                 .compact();
     }
 

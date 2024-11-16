@@ -26,6 +26,6 @@ public class ClientDetailDTO implements UserDetails {
 
     @Override
     public String getUsername() {
-        return client.getFirstName();
+        return client.getEmail();
     }
 }
