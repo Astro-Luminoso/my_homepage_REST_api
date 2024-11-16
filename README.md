@@ -9,7 +9,7 @@ The API provides various functionalities for managing content and services on th
 <div align="center">
   
   ![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-3.3.5-lightgreen?style=for-the-badge&logo=springboot&logoColor=lightgreen)
-  ![Spring Security Badge](https://img.shields.io/badge/Spring%20Security-3.3.5-lightgreen?style=for-the-badge&logo=springsecurity&logoColor=lightgreen)
+  ![Spring Security Badge](https://img.shields.io/badge/Spring%20Security-6.3.4-lightgreen?style=for-the-badge&logo=springsecurity&logoColor=lightgreen)
   ![Gradle Badge](https://img.shields.io/badge/Gradle-8.10.2-blue?style=for-the-badge&logo=gradle&logoColor=blue)
   
 </div>
