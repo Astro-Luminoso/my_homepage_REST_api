@@ -6,10 +6,11 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Component
-public class JwtProvider {
+public class JwtUtilProvider {
 
     @Value("${jwt.secret}")
     private String secret;
@@ -18,8 +19,8 @@ public class JwtProvider {
     private long expireTime;
 
     private SecretKey getSecretKey() {
-        byte[] keyBytes = secret.getBytes();
-        return new SecretKeySpec(keyBytes, "HmacSHA512");
+
+        return new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS512.key().build().getAlgorithm());
     }
 
     public String generateToken(String email) {

@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     private ClientService clientService;
-    private JwtProvider jwtProvider;
+    private JwtUtilProvider jwtUtilProvider;
 
     @Autowired
-    public CustomAuthenticationProvider (ClientService clientService, JwtProvider jwtProvider) {
+    public CustomAuthenticationProvider (ClientService clientService, JwtUtilProvider jwtUtilProvider) {
         super();
         this.clientService = clientService;
-        this.jwtProvider = jwtProvider;
+        this.jwtUtilProvider = jwtUtilProvider;
     }
 
     @Override
