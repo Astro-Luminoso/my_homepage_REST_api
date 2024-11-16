@@ -3,13 +3,13 @@ package me.h_yang.my_homepage.config.security;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import me.h_yang.my_homepage.dto.ClientDetailDTO;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import java.util.Collection;
 
@@ -18,14 +18,15 @@ import java.util.Collection;
  */
 public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final AuthenticationManager authenticationManager;
+    private final AuthenticationProvider authenticationProvider;
     private final JwtUtilProvider jwtUtilProvider;
 
 
 
-    public LoginFilter(AuthenticationManager authenticationManager, JwtUtilProvider jwtUtilProvider) {
-        this.authenticationManager = authenticationManager;
+    public LoginFilter(AuthenticationProvider authenticationProvider, JwtUtilProvider jwtUtilProvider) {
+        this.authenticationProvider = authenticationProvider;
         this.jwtUtilProvider = jwtUtilProvider;
+        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/api/login", "POST"));
     }
 
     /**
@@ -46,7 +47,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(email, password, null);
 
         // Return the authentication request
-        return authenticationManager.authenticate(authToken);
+        return authenticationProvider.authenticate(authToken);
     }
 
     @Override
