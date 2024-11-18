@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientService implements UserDetailsService {
+public class ClientService {
 
     private final ClientRepository clientRepository;
 
@@ -25,8 +25,8 @@ public class ClientService implements UserDetailsService {
     }
 
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+    public ClientDetailDTO loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Client clientData = clientRepository.findByEmail(username);
 

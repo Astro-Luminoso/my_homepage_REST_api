@@ -61,7 +61,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     @Override
-    public void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) {
+    public void unsuccessfulAuthentication(HttpServletRequest request,
+                                           HttpServletResponse response,
+                                           AuthenticationException failed) {
 
     }
 
