@@ -1,12 +1,10 @@
 package me.h_yang.my_homepage.service;
 
+import me.h_yang.my_homepage.Exception.ClientNotFoundException;
 import me.h_yang.my_homepage.dto.ClientDetailDTO;
 import me.h_yang.my_homepage.entity.Client;
 import me.h_yang.my_homepage.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,12 +22,14 @@ public class ClientService {
         return clientRepository.findByEmail(email) != null;
     }
 
+    public ClientDetailDTO findClientByEmail(String email) {
 
+        Client clientData = clientRepository.findByEmail(email);
 
-    public ClientDetailDTO loadUserByUsername(String username) throws UsernameNotFoundException {
+        if (clientData == null) {
+            throw new ClientNotFoundException(email);
+        }
 
-        Client clientData = clientRepository.findByEmail(username);
-
-        return clientData != null ? new ClientDetailDTO(clientData) : null;
+        return new ClientDetailDTO(clientData);
     }
 }

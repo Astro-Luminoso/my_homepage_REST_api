@@ -19,12 +19,10 @@ public class ClientDetailDTO {
         return client.getAuthorities();
     }
 
-    @Override
     public String getPassword() {
         return client.getPassword();
     }
 
-    @Override
     public String getUsername() {
         return client.getEmail();
     }

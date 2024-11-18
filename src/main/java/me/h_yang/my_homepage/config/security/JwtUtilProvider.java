@@ -28,7 +28,7 @@ public class JwtUtilProvider {
 
     public boolean isExpired(String token) {
 
-        return Jwts.parser().verifyWith(secret).build().parseSignedClaims(token).getPayload().get("exp", Date.class).before(new Date());
+        return Jwts.parser().verifyWith(secret).build().parseSignedClaims(token).getPayload().getExpiration().before(new Date());
     }
 
     public String generateToken(String email) {
@@ -36,7 +36,7 @@ public class JwtUtilProvider {
                 .header().type("JWT")
                 .and()
                 .subject(email)
-                .issuedAt(new Date())
+                .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + expireTime))
                 .signWith(this.secret)
                 .compact();
