@@ -63,8 +63,8 @@ public class SecurityConfiguration {
 
         http.securityMatcher("h2-console/**").headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
 
-        http.addFilterAt(new LoginFilter(authenticationProvider, jwtUtilProvider), UsernamePasswordAuthenticationFilter.class)
-                .addFilterAfter(new JwtAuthenticationFilter(jwtUtilProvider), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterAt(new LoginFilter(authenticationProvider, jwtUtilProvider), UsernamePasswordAuthenticationFilter.class);
+//                .addFilterAfter(new JwtFilter(jwtUtilProvider), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

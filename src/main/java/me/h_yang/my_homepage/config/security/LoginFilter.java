@@ -23,10 +23,17 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
 
 
+    /**
+     * Constructor for the LoginFilter.
+     *
+     * @param authenticationProvider The authentication provider.
+     * @param jwtUtilProvider The JWT utility provider.
+     */
     public LoginFilter(AuthenticationProvider authenticationProvider, JwtUtilProvider jwtUtilProvider) {
         this.authenticationProvider = authenticationProvider;
         this.jwtUtilProvider = jwtUtilProvider;
     }
+
 
     /**
      * Attempt to authenticate the user using the email and password provided in the request.
@@ -72,6 +79,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
        response.addHeader("Authorization", "Bearer " + token);
     }
+
 
     /**
      * Handle an unsuccessful authentication.
