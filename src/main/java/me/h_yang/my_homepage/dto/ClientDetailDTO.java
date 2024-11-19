@@ -2,8 +2,7 @@ package me.h_yang.my_homepage.dto;
 
 import me.h_yang.my_homepage.entity.Client;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import java.util.Collection;
+import java.util.List;
 
 
 public class ClientDetailDTO {
@@ -14,7 +13,7 @@ public class ClientDetailDTO {
         this.client = client;
     }
 
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public List<GrantedAuthority> getAuthorities() {
 
         return client.getAuthorities();
     }
@@ -23,7 +22,7 @@ public class ClientDetailDTO {
         return client.getPassword();
     }
 
-    public String getUsername() {
+    public String getEmail() {
         return client.getEmail();
     }
 }
