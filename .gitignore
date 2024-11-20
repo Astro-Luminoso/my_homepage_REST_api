@@ -40,3 +40,7 @@ out/
 
 ### For MacOS
 **/.DS_Store
+
+
+### For Test Data
+data.sql
