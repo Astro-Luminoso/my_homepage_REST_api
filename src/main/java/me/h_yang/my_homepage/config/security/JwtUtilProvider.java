@@ -32,6 +32,7 @@ public class JwtUtilProvider {
     }
 
     public String generateToken(String email) {
+
         return Jwts.builder()
                 .header().type("JWT")
                 .and()

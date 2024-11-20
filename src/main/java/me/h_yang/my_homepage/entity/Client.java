@@ -12,7 +12,7 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "client_id")
     private Long id;
 
     @Column(nullable = false)
@@ -27,7 +27,7 @@ public class Client {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Authority> userRoles;
 
 

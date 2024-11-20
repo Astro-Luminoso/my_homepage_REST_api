@@ -11,7 +11,7 @@ public class Authority {
     private Long id;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="client_id")
     private Client client;
 
 

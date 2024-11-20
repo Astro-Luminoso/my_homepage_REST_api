@@ -11,6 +11,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,12 +46,11 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         // Extract email and password from the request
-        String email = obtainUsername(request);
+        String email = request.getParameter("email");
         String password = obtainPassword(request);
 
-
         // Create a new UsernamePasswordAuthenticationToken with the email and password
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(email, password, null);
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(email, password, new ArrayList<GrantedAuthority>());
 
         // Return the authentication request
         return authenticationProvider.authenticate(authToken);
@@ -70,10 +70,8 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
                                          FilterChain chain,
                                          Authentication authentication) {
 
-        ClientDetailDTO clientDetailDTO = (ClientDetailDTO) authentication.getPrincipal();
-        String userEmail = clientDetailDTO.getEmail();
 
-       List<GrantedAuthority> authorities = clientDetailDTO.getAuthorities();
+        String userEmail = authentication.getPrincipal().toString();
 
        String token = jwtUtilProvider.generateToken(userEmail);
 

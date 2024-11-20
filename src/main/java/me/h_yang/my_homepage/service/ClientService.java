@@ -27,6 +27,7 @@ public class ClientService {
         Client clientData = clientRepository.findByEmail(email);
 
         if (clientData == null) {
+            System.out.println("Client no no");
             throw new ClientNotFoundException(email);
         }
 

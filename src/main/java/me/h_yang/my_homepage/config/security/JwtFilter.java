@@ -7,11 +7,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import me.h_yang.my_homepage.config.token.JwtAuthenticationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
@@ -45,7 +47,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
 
 
-        Authentication jwtAuthentication = new JwtAuthenticationToken(jwtUtilProvider.getEmail(token), token, null);
+        Authentication jwtAuthentication = new JwtAuthenticationToken(jwtUtilProvider.getEmail(token), token, new ArrayList<GrantedAuthority>());
 
         SecurityContextHolder.getContext().setAuthentication(jwtAuthentication);
 
