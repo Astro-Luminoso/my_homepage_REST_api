@@ -15,6 +15,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Jwt Filter to check if the token is valid.
+ */
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
@@ -26,6 +29,13 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
 
+    /**
+     * Check if the token is valid.
+     *
+     * @param request The HTTP request object.
+     * @param response The HTTP response object.
+     * @param filterChain The filter chain.
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,

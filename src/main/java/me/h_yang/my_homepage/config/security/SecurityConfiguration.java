@@ -24,11 +24,22 @@ public class SecurityConfiguration {
     private final JwtUtilProvider jwtUtilProvider;
 
 
+    /**
+     * Constructor for the SecurityConfiguration.
+     *
+     * @param authenticationProvider The authentication provider.
+     * @param jwtUtilProvider The JWT utility provider.
+     */
     public SecurityConfiguration (AuthenticationProvider authenticationProvider, JwtUtilProvider jwtUtilProvider) {
         this.authenticationProvider = authenticationProvider;
         this.jwtUtilProvider = jwtUtilProvider;
     }
 
+    /**
+     * Create a new CorsConfiguration object.
+     *
+     * @return A new CorsConfiguration object.
+     */
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
 

@@ -12,6 +12,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * Custom authentication provider for handling login requests.
+ */
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -25,6 +28,13 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         this.jwtUtilProvider = jwtUtilProvider;
     }
 
+
+    /**
+     * Attempt to authenticate the user using the email and password provided in the request.
+     *
+     * @param authentication The authentication object.
+     * @return The authentication object.
+     */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String email = String.valueOf(authentication.getName()).toLowerCase();
@@ -45,6 +55,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return new JwtAuthenticationToken(email, jwtUtilProvider.generateToken(email), clientDTO.getAuthorities());
     }
 
+    /**
+     * Check if the authentication object is supported.
+     *
+     * @param authentication The authentication object.
+     * @return True if the authentication object is supported, false otherwise.
+     */
     @Override
     public boolean supports(Class<?> authentication) {
         System.out.println(UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));
