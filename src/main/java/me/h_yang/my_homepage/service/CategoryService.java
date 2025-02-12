@@ -25,9 +25,9 @@ public class CategoryService {
      *
      * @return list of Category titles
      */
-    public List<String> getAllCategoriesName() {
+    public List<Category> getAllCategories() {
 
-        return categoryRepository.findAll().stream().map(Category::getCategoryTitle).toList();
+        return categoryRepository.findAll();
     }
 
     /**
