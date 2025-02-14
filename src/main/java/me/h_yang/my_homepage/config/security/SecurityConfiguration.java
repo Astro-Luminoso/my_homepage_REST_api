@@ -1,5 +1,6 @@
 package me.h_yang.my_homepage.config.security;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,6 +25,10 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final JwtUtilProvider jwtUtilProvider;
 
+    @Value("${app.cors.allowed-origins}")
+    private String allowedOrigins;
+
+
 
     /**
      * Constructor for the SecurityConfiguration.
@@ -47,7 +52,7 @@ public class SecurityConfiguration {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
+        config.addAllowedOrigin(allowedOrigins);
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);

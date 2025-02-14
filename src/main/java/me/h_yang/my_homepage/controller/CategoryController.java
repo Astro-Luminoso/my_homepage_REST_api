@@ -1,4 +1,4 @@
-package me.h_yang.my_homepage.controller.authentication;
+package me.h_yang.my_homepage.controller;
 
 
 import me.h_yang.my_homepage.dto.CategoryDTO;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/open/categories")
 public class CategoryController {
 
     @Autowired
