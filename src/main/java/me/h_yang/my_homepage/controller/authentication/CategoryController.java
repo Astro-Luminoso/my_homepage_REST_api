@@ -1,7 +1,7 @@
 package me.h_yang.my_homepage.controller.authentication;
 
 
-import me.h_yang.my_homepage.entity.Category;
+import me.h_yang.my_homepage.dto.CategoryDTO;
 import me.h_yang.my_homepage.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +18,12 @@ public class CategoryController {
     public CategoryService categoryService;
 
     /**
-     * Get all categories including subcategories
+     * Get all categories
      *
-     * @return list of categories with subcategories
+     * @return list of categories
      */
     @GetMapping
-    public List<Category> getAllCategories() {
+    public List<CategoryDTO> getAllCategories() {
         return categoryService.getAllCategories();
     }
 }
