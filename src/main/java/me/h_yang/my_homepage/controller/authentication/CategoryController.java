@@ -2,7 +2,6 @@ package me.h_yang.my_homepage.controller.authentication;
 
 
 import me.h_yang.my_homepage.entity.Category;
-import me.h_yang.my_homepage.repository.CategoryRepository;
 import me.h_yang.my_homepage.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
