@@ -1,6 +1,6 @@
 package me.h_yang.my_homepage.service;
 
-import me.h_yang.my_homepage.entity.Category;
+import me.h_yang.my_homepage.dto.CategoryDTO;
 import me.h_yang.my_homepage.entity.SubCategory;
 import me.h_yang.my_homepage.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +23,12 @@ public class CategoryService {
     /**
      * Get all exist categories
      *
-     * @return list of Category titles
+     * @return list of categoryDTOs
      */
-    public List<String> getAllCategoriesName() {
+    public List<CategoryDTO> getAllCategories() {
 
-        return categoryRepository.findAll().stream().map(Category::getCategoryTitle).toList();
+        return categoryRepository.findAll().stream()
+                .map(category -> new CategoryDTO(category.getId(), category.getCategoryTitle())).toList();
     }
 
     /**

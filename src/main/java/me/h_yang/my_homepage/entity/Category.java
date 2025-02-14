@@ -29,6 +29,10 @@ public class Category {
         this.categoryTitle = categoryTitle;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getCategoryTitle() {
         return categoryTitle;
     }

@@ -39,9 +39,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String email = String.valueOf(authentication.getName()).toLowerCase();
         String password = String.valueOf(authentication.getCredentials());
-        System.out.println("I am from CustomAuthenticationProvider");
-        System.out.println(email);
-        System.out.println(password);
+//        System.out.println("I am from CustomAuthenticationProvider");
+//        System.out.println(email);
+//        System.out.println(password);
         ClientDetailDTO clientDTO = clientService.findClientByEmail(email);
 
 
