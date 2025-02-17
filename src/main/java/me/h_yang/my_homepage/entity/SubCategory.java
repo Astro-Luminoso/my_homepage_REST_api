@@ -37,10 +37,14 @@ public class SubCategory {
         return subCategoryTitle;
     }
 
-    public Category getCategory() {
-        return category;
+    /**
+     * get the id of the subcategory
+     *
+     * @return the id of the subcategory
+     */
+    public Long getId() {
+        return id;
     }
-
     public void setSubCategoryTitle(String subCategoryTitle) {
         this.subCategoryTitle = subCategoryTitle;
     }

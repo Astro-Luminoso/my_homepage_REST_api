@@ -24,4 +24,6 @@ public interface CategoryRepository extends CrudRepository<Category, Long> {
      */
     Category findByCategoryTitle(String categoryTitle);
 
+
+    Category findById(long id);
 }
