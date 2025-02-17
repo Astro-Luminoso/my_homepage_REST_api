@@ -42,6 +42,7 @@ jobs:
         echo "JWT_SECRET=${{secrets.JWT_SECRET}}" >> $GITHUB_ENV
         echo "JWT_EXPIRE_TIME=${{secrets.JWT_EXPIRE_TIME}}" >> $GITHUB_ENV
         echo "DEFAULT_URI_PREFIX=${{secrets.DEFAULT_URI_PREFIX}}" >> $GITHUB_ENV
+        echo "CORS_ALLOWED_ORIGINS=${{secrets.CORS_ALLOWED_ORIGINS}}" >> $GITHUB_ENV
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build
