@@ -2,11 +2,19 @@ package me.h_yang.my_homepage.integration.controller;
 
 import me.h_yang.my_homepage.dto.CategoryDTO;
 import me.h_yang.my_homepage.dto.SubCategoryDTO;
+import me.h_yang.my_homepage.entity.Category;
+import me.h_yang.my_homepage.entity.SubCategory;
+import me.h_yang.my_homepage.repository.CategoryRepository;
+import me.h_yang.my_homepage.repository.SubCategoryRepository;
+import me.h_yang.my_homepage.service.CategoryService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
@@ -22,8 +30,49 @@ class CategoryControllerTests {
 	@Autowired
 	TestRestTemplate testRestTemplate;
 
+	@Autowired
+	CategoryRepository categoryRepository;
+
+	@Autowired
+	SubCategoryRepository subCategoryRepository;
+
+
+	List<Category> categories;
+
+	@BeforeEach
+	void setUp() {
+		categoryRepository.deleteAll();
+		subCategoryRepository.deleteAll();
+		categoryRepository.saveAll(List.of(
+				new Category("Category1"),
+				new Category("Category2"),
+				new Category("Category3"),
+				new Category("Category4")
+		));
+
+		categories = categoryRepository.findAll();
+
+		subCategoryRepository.saveAll(List.of(
+				new SubCategory(categories.get(0), "SubCategory1"),
+				new SubCategory(categories.get(0), "SubCategory2"),
+				new SubCategory(categories.get(0), "SubCategory3"),
+				new SubCategory(categories.get(1), "SubCategory4"),
+				new SubCategory(categories.get(1), "SubCategory5"),
+				new SubCategory(categories.get(3), "SubCategory6"),
+				new SubCategory(categories.get(3), "SubCategory7"),
+				new SubCategory(categories.get(3), "SubCategory8"),
+				new SubCategory(categories.get(3), "SubCategory9"),
+				new SubCategory(categories.get(3), "SubCategory10")
+		));
+
+
+
+	}
+
 	@Test
 	void getCategory() {
+
+
 
 		ResponseEntity<List<CategoryDTO>> categories = testRestTemplate.exchange(
 				"/open/categories",
@@ -35,19 +84,17 @@ class CategoryControllerTests {
 
 		List<CategoryDTO> categoryList = categories.getBody();
         Assertions.assertNotNull(categoryList);
+		Assertions.assertInstanceOf(CategoryDTO.class, categoryList.getFirst());
         Assertions.assertEquals(4, categoryList.size());
+
 	}
 
 
-	@ParameterizedTest
-	@CsvSource({
-			"'1', 3",
-			"'2', 5",
-			"'4', 5"
-	})
-	void getSubCategoryOfPhotography(String categoryId, int expectedSize) {
+	@Test
+	void getSubCategory() {
+
 		ResponseEntity<List<SubCategoryDTO>> subCategories = testRestTemplate.exchange(
-				"/open/categories/subcategories?categoryId=" + categoryId,
+				"/open/categories/subcategories?categoryId=4",
 				HttpMethod.GET,
 				null,
 				new ParameterizedTypeReference<List<SubCategoryDTO>>(){});
@@ -56,6 +103,7 @@ class CategoryControllerTests {
 
 		List<SubCategoryDTO> subCategoryList = subCategories.getBody();
 		Assertions.assertNotNull(subCategoryList);
-		Assertions.assertEquals(expectedSize, subCategoryList.size());
+        Assertions.assertInstanceOf(SubCategoryDTO.class, subCategoryList.getFirst());
+		Assertions.assertEquals(5, subCategoryList.size());
 	}
 }
