@@ -28,8 +28,9 @@ public class SubCategory {
      *
      * @param subCategoryTitle the title of the subcategory
      */
-    public SubCategory(String subCategoryTitle) {
+    public SubCategory(Category category, String subCategoryTitle) {
 
+        this.category = category;
         this.subCategoryTitle = subCategoryTitle;
     }
 
@@ -47,6 +48,10 @@ public class SubCategory {
     }
     public void setSubCategoryTitle(String subCategoryTitle) {
         this.subCategoryTitle = subCategoryTitle;
+    }
+
+    public String toString() {
+        return String.format("SubCategory id: %d, categoryId: %d,title: %s", id, category.getId(), subCategoryTitle);
     }
 
 

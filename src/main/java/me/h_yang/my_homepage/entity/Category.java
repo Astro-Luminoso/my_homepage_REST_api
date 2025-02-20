@@ -49,4 +49,8 @@ public class Category {
         return subCategoryList;
     }
 
+    public String toString() {
+        return String.format("Category id: %d, title: %s", id, categoryTitle);
+    }
+
 }
