@@ -50,6 +50,10 @@ public class SubCategory {
         this.subCategoryTitle = subCategoryTitle;
     }
 
+    public String toString() {
+        return String.format("SubCategory id: %d, categoryId: %d,title: %s", id, category.getId(), subCategoryTitle);
+    }
+
 
 
 }
