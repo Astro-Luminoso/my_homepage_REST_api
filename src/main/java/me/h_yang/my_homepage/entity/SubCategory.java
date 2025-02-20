@@ -28,8 +28,9 @@ public class SubCategory {
      *
      * @param subCategoryTitle the title of the subcategory
      */
-    public SubCategory(String subCategoryTitle) {
+    public SubCategory(Category category, String subCategoryTitle) {
 
+        this.category = category;
         this.subCategoryTitle = subCategoryTitle;
     }
 
