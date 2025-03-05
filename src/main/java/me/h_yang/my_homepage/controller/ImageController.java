@@ -27,7 +27,7 @@ public class ImageController {
 
             String contentType = Files.probeContentType(imagePath);
             if (contentType == null) {
-                contentType = "application/octet-stream";  // MIME 타입이 추정되지 않으면 기본값 설정
+                contentType = "application/octet-stream";
             }
 
             HttpHeaders headers = new HttpHeaders();
