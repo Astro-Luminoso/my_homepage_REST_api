@@ -1,5 +1,7 @@
 package me.h_yang.my_homepage.controller;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,18 +16,34 @@ import java.nio.file.Path;
 @RequestMapping("/open/images")
 public class ImageController {
 
-    private final String IMAGE_PATH = "src/main/resources/image/";
-
 
     @GetMapping("/logo")
     public ResponseEntity<byte[]> getLogo() {
 
-        Path imagePath = Path.of(IMAGE_PATH + "blog_logo.png");
+
+        return getImageResponse("blog_logo.png");
+    }
+
+    @GetMapping("/main-background")
+    public ResponseEntity<byte[]> getMainBackground() {
+
+        return getImageResponse("main_background.png");
+    }
+
+
+    private ResponseEntity<byte[]> getImageResponse(String fileName) {
 
         try {
-            byte[] image = Files.readAllBytes(imagePath);
 
-            String contentType = Files.probeContentType(imagePath);
+            Resource resource = new ClassPathResource("image/" + fileName);
+
+            if (!resource.exists()) {
+
+                return ResponseEntity.status(404).body(("File not found: " + fileName).getBytes());
+            }
+            byte[] image = Files.readAllBytes(resource.getFile().toPath());
+
+            String contentType = Files.probeContentType(resource.getFile().toPath());
             if (contentType == null) {
                 contentType = "application/octet-stream";
             }
@@ -36,7 +54,7 @@ public class ImageController {
             return new ResponseEntity<>(image, headers, 200);
 
         } catch (IOException e) {
-            return ResponseEntity.status(404).body(null);
+            return ResponseEntity.status(500).body(("File not found: " + fileName).getBytes());
         }
     }
 }
