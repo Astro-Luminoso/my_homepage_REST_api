@@ -42,5 +42,8 @@ out/
 **/.DS_Store
 
 
+
+**/image
+
 ### For Test Data
 data.sql
