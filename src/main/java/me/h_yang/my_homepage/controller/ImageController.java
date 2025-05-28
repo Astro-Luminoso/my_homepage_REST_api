@@ -30,6 +30,12 @@ public class ImageController {
         return getImageResponse("main_background.png");
     }
 
+    @GetMapping("/welcome-image")
+    public ResponseEntity<byte[]> getWelcomeBackground() {
+
+        return getImageResponse("welcome_image.png");
+    }
+
 
     private ResponseEntity<byte[]> getImageResponse(String fileName) {
 
