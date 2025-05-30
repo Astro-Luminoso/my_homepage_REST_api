@@ -36,6 +36,12 @@ public class ImageController {
         return getImageResponse("welcome_image.png");
     }
 
+    @GetMapping ("/white-logo")
+    public ResponseEntity<byte[]> getWhiteLogo() {
+
+        return getImageResponse("logo-white.png");
+    }
+
 
     private ResponseEntity<byte[]> getImageResponse(String fileName) {
 
