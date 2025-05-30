@@ -1,5 +1,7 @@
 package me.h_yang.my_homepage.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -17,9 +19,13 @@ import java.nio.file.Path;
 public class ImageController {
 
 
+    Logger logger = LoggerFactory.getLogger(ImageController.class);
+
+
     @GetMapping("/logo")
     public ResponseEntity<byte[]> getLogo() {
 
+        logger.info("GET: /open/images/logo - Request for logo image");
 
         return getImageResponse("blog_logo.png");
     }
@@ -27,13 +33,25 @@ public class ImageController {
     @GetMapping("/main-background")
     public ResponseEntity<byte[]> getMainBackground() {
 
+        logger.info("GET: /open/images/main-background - Request for main background image");
+
         return getImageResponse("main_background.png");
     }
 
     @GetMapping("/welcome-image")
     public ResponseEntity<byte[]> getWelcomeBackground() {
 
+        logger.info("GET: /open/images/welcome-image - Request for welcome image");
+
         return getImageResponse("welcome_image.png");
+    }
+
+    @GetMapping ("/white-logo")
+    public ResponseEntity<byte[]> getWhiteLogo() {
+
+        logger.info("GET: /open/images/white-logo - Request for white logo image");
+
+        return getImageResponse("logo-white.png");
     }
 
 
@@ -44,6 +62,8 @@ public class ImageController {
             Resource resource = new ClassPathResource("image/" + fileName);
 
             if (!resource.exists()) {
+
+                logger.error("Response Status 404: {} not found", fileName);
 
                 return ResponseEntity.status(404).body(("File not found: " + fileName).getBytes());
             }
@@ -60,7 +80,8 @@ public class ImageController {
             return new ResponseEntity<>(image, headers, 200);
 
         } catch (IOException e) {
-            return ResponseEntity.status(500).body(("File not found: " + fileName).getBytes());
+            logger.error("Response Status 500: Server Error while processing file {}", fileName, e);
+            return ResponseEntity.status(500).body(("Server Error Occurred").getBytes());
         }
     }
 }
