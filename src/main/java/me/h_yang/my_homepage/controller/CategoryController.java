@@ -18,10 +18,14 @@ import java.util.List;
 @RequestMapping("/open/categories")
 public class CategoryController {
 
-    @Autowired
-    public CategoryService categoryService;
+    private final CategoryService categoryService;
 
     Logger logger = LoggerFactory.getLogger(CategoryController.class);
+
+    @Autowired
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     /**
      * Get all categories
