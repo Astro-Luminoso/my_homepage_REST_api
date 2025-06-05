@@ -4,17 +4,12 @@ import me.h_yang.my_homepage.service.ImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 @RestController
 @RequestMapping("/open/images")
@@ -32,8 +27,11 @@ public class ImageController {
         this.imageService = imageService;
     }
 
-
-
+    /**
+     * Get the logo image.
+     *
+     * @return ResponseEntity with the logo image.
+     */
     @GetMapping("/logo")
     public ResponseEntity<byte[]> getLogo() {
 
@@ -42,6 +40,11 @@ public class ImageController {
         return imageService.getImageResponse("blog_logo.png");
     }
 
+    /**
+     * Get the main background image.
+     *
+     * @return ResponseEntity with the main background image.
+     */
     @GetMapping("/main-background")
     public ResponseEntity<byte[]> getMainBackground() {
 
@@ -50,6 +53,11 @@ public class ImageController {
         return imageService.getImageResponse("main_background.png");
     }
 
+    /**
+     * Get the welcome image.
+     *
+     * @return ResponseEntity with the welcome background image.
+     */
     @GetMapping("/welcome-image")
     public ResponseEntity<byte[]> getWelcomeBackground() {
 
@@ -58,6 +66,11 @@ public class ImageController {
         return imageService.getImageResponse("welcome_image.png");
     }
 
+    /**
+     * Get the white logo image.
+     *
+     * @return ResponseEntity with the white logo image.
+     */
     @GetMapping ("/white-logo")
     public ResponseEntity<byte[]> getWhiteLogo() {
 
