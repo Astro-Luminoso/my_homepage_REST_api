@@ -3,6 +3,8 @@ package me.h_yang.my_homepage.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class SubCategory {
 
@@ -17,6 +19,9 @@ public class SubCategory {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "subCategory", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<BlogPost> blogPosts;
 
 
     // JPA empty constructor

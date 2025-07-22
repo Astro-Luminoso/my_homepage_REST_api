@@ -20,6 +20,9 @@ public class Category {
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<SubCategory> subCategoryList;
 
+    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<BlogPost> blogPostList;
+
     // JPA empty constructor
     protected Category() {}
 
