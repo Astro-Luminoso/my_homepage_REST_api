@@ -2,6 +2,7 @@ package me.h_yang.my_homepage.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -30,7 +31,7 @@ public class BlogPost {
     private String content;
 
     @Column(nullable = false)
-    private Date updatedDate;
+    private LocalDate updatedDate;
 
 
     // JPA empty constructor
@@ -42,6 +43,19 @@ public class BlogPost {
         this.subCategory = subCategory;
         this.author = author;
         this.content = content;
-        this.updatedDate = new Date();
+        this.updatedDate = LocalDate.now();
+    }
+
+    public Long getId(){
+        return id;
+    }
+    public String getTitle() {
+        return title;
+    }
+    public Category getCategory() {
+        return category;
+    }
+    public LocalDate getUpdatedDate() {
+        return updatedDate;
     }
 }
