@@ -37,8 +37,8 @@ public class BlogPostService {
         Specification<BlogPost> spec = Specification
                 .where(BlogPostSpecification.hasTitle(title))
                 .and(BlogPostSpecification.hasCategoryId(categoryId));
-        logger.info("BLOG POST SERVICE: The Where clause is created: {}", spec);
 
+        logger.info("BLOG POST SERVICE: Creating pageable object with page: {}, size: {}",page, size);
         Pageable pageable = PageRequest.of(page, size, Sort.by("updatedDate").descending());
 
         logger.info("BLOG POST SERVICE: Retrieving data");
