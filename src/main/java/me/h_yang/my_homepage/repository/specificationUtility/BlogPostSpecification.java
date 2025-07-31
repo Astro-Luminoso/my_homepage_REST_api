@@ -8,7 +8,7 @@ public class BlogPostSpecification {
     public static Specification<BlogPost> hasTitle(String title) {
 
         return title == null ?
-                null : (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("title"), title);
+                null : (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get("title"), "%" + title + "%");
     }
 
     public static Specification<BlogPost> hasCategoryId(Long categoryId) {
