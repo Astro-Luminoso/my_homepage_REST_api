@@ -28,13 +28,13 @@ public class BlogPostController {
 
 
     @GetMapping
-    public List<BriefBlogPostDTO> getAllBriefBlogPostsDetail(@RequestParam(required = false) String title,
+    public List<BriefBlogPostDTO> getAllBriefBlogPostsDetail(@RequestParam(required = false) String query,
                                                              @RequestParam(required = false) Long categoryId,
                                                              @RequestParam(defaultValue = "0") int page,
                                                              @RequestParam(defaultValue = "8") int size) {
 
         logger.info("GET: /open/blogposts/ retrieving all blog post details briefly");
 
-        return blogPostService.getBlogPostBriefByPage(title, categoryId, page, size);
+        return blogPostService.getBlogPostBriefByPage(query, categoryId, page, size);
     }
 }
