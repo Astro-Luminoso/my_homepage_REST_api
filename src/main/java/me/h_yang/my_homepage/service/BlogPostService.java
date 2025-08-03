@@ -51,7 +51,7 @@ public class BlogPostService {
                         post.getCategory().getCategoryTitle(),
                         post.getUpdatedDate()))
                 .toList();
-        int totalCount = blogPostList.size();
+        long totalCount = blogPostRepository.count();
         return new BlogPostList(blogPostList, totalCount);
     }
 
