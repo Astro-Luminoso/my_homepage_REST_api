@@ -1,7 +1,7 @@
 package me.h_yang.my_homepage.controller;
 
 
-import me.h_yang.my_homepage.dto.BlogPostList;
+import me.h_yang.my_homepage.dto.BlogPostListDTO;
 import me.h_yang.my_homepage.service.BlogPostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +27,10 @@ public class BlogPostController {
 
 
     @GetMapping
-    public BlogPostList getAllBriefBlogPostsDetail(@RequestParam(required = false) String query,
-                                                   @RequestParam(required = false) Long categoryId,
-                                                   @RequestParam(defaultValue = "0") int page,
-                                                   @RequestParam(defaultValue = "8") int size) {
+    public BlogPostListDTO getAllBriefBlogPostsDetail(@RequestParam(required = false) String query,
+                                                      @RequestParam(required = false) Long categoryId,
+                                                      @RequestParam(defaultValue = "0") int page,
+                                                      @RequestParam(defaultValue = "8") int size) {
 
         logger.info("GET: /open/blogposts/ retrieving all blog post details briefly");
 

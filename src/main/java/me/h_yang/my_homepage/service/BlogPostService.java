@@ -1,6 +1,6 @@
 package me.h_yang.my_homepage.service;
 
-import me.h_yang.my_homepage.dto.BlogPostList;
+import me.h_yang.my_homepage.dto.BlogPostListDTO;
 import me.h_yang.my_homepage.dto.BriefBlogPostDTO;
 import me.h_yang.my_homepage.entity.BlogPost;
 import me.h_yang.my_homepage.repository.BlogPostRepository;
@@ -30,7 +30,7 @@ public class BlogPostService {
     }
 
 
-    public BlogPostList getBlogPostBriefByPage (String title, Long categoryId, int page, int size) {
+    public BlogPostListDTO getBlogPostBriefByPage (String title, Long categoryId, int page, int size) {
 
         logger.info("BLOG POST SERVICE: Manipulating WHERE clause for blog post search with title: {}, categoryId: {}",
                 title, categoryId);
@@ -51,8 +51,8 @@ public class BlogPostService {
                         post.getCategory().getCategoryTitle(),
                         post.getUpdatedDate()))
                 .toList();
-        long totalCount = blogPostRepository.count();
-        return new BlogPostList(blogPostList, totalCount);
+        long totalCount = blogPostRepository.count(spec);
+        return new BlogPostListDTO(blogPostList, totalCount);
     }
 
 }
