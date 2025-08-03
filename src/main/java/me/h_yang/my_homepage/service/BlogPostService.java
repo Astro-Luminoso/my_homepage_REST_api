@@ -1,5 +1,6 @@
 package me.h_yang.my_homepage.service;
 
+import me.h_yang.my_homepage.dto.BlogPostList;
 import me.h_yang.my_homepage.dto.BriefBlogPostDTO;
 import me.h_yang.my_homepage.entity.BlogPost;
 import me.h_yang.my_homepage.repository.BlogPostRepository;
@@ -29,7 +30,7 @@ public class BlogPostService {
     }
 
 
-    public List <BriefBlogPostDTO> getBlogPostBriefByPage (String title, Long categoryId, int page, int size) {
+    public BlogPostList getBlogPostBriefByPage (String title, Long categoryId, int page, int size) {
 
         logger.info("BLOG POST SERVICE: Manipulating WHERE clause for blog post search with title: {}, categoryId: {}",
                 title, categoryId);
@@ -42,13 +43,16 @@ public class BlogPostService {
         Pageable pageable = PageRequest.of(page, size, Sort.by("updatedDate").descending());
 
         logger.info("BLOG POST SERVICE: Retrieving data");
-        return blogPostRepository.findAll(spec, pageable)
+
+        List<BriefBlogPostDTO> blogPostList = blogPostRepository.findAll(spec, pageable)
                 .stream()
                 .map(post -> new BriefBlogPostDTO(
                         post.getId(), post.getTitle(),
                         post.getCategory().getCategoryTitle(),
                         post.getUpdatedDate()))
                 .toList();
+        int totalCount = blogPostList.size();
+        return new BlogPostList(blogPostList, totalCount);
     }
 
 }

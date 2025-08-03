@@ -1,7 +1,7 @@
 package me.h_yang.my_homepage.controller;
 
 
-import me.h_yang.my_homepage.dto.BriefBlogPostDTO;
+import me.h_yang.my_homepage.dto.BlogPostList;
 import me.h_yang.my_homepage.service.BlogPostService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/open/blogposts")
@@ -28,10 +27,10 @@ public class BlogPostController {
 
 
     @GetMapping
-    public List<BriefBlogPostDTO> getAllBriefBlogPostsDetail(@RequestParam(required = false) String query,
-                                                             @RequestParam(required = false) Long categoryId,
-                                                             @RequestParam(defaultValue = "0") int page,
-                                                             @RequestParam(defaultValue = "8") int size) {
+    public BlogPostList getAllBriefBlogPostsDetail(@RequestParam(required = false) String query,
+                                                   @RequestParam(required = false) Long categoryId,
+                                                   @RequestParam(defaultValue = "0") int page,
+                                                   @RequestParam(defaultValue = "8") int size) {
 
         logger.info("GET: /open/blogposts/ retrieving all blog post details briefly");
 
