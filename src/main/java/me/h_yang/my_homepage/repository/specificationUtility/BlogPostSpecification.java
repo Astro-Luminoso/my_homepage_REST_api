@@ -13,6 +13,6 @@ public class BlogPostSpecification {
 
     public static Specification<BlogPost> hasCategoryId(Long categoryId) {
         return categoryId == null ?
-                null : (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("category"), categoryId);
+                null : (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("category").get("id"), categoryId);
     }
 }
