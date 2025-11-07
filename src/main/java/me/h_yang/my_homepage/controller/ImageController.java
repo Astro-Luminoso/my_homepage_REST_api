@@ -25,7 +25,7 @@ public class ImageController {
     @GetMapping("/logo")
     public ResponseEntity<byte[]> getLogo() {
 
-        logger.info("GET: /open/images/logo - Request for logo image");
+        logger.info("GET: /open/images/logo - Requested logo image");
 
         return getImageResponse("blog_logo.png");
     }
@@ -33,7 +33,7 @@ public class ImageController {
     @GetMapping("/main-background")
     public ResponseEntity<byte[]> getMainBackground() {
 
-        logger.info("GET: /open/images/main-background - Request for main background image");
+        logger.info("GET: /open/images/main-background - Requested main background image");
 
         return getImageResponse("main_background.png");
     }
@@ -41,7 +41,7 @@ public class ImageController {
     @GetMapping("/welcome-image")
     public ResponseEntity<byte[]> getWelcomeBackground() {
 
-        logger.info("GET: /open/images/welcome-image - Request for welcome image");
+        logger.info("GET: /open/images/welcome-image - Requested welcome image");
 
         return getImageResponse("welcome_image.png");
     }
@@ -49,7 +49,7 @@ public class ImageController {
     @GetMapping ("/white-logo")
     public ResponseEntity<byte[]> getWhiteLogo() {
 
-        logger.info("GET: /open/images/white-logo - Request for white logo image");
+        logger.info("GET: /open/images/white-logo - Requested white logo image");
 
         return getImageResponse("logo-white.png");
     }
