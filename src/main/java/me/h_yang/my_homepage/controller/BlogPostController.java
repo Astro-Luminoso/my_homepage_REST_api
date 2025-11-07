@@ -30,7 +30,7 @@ public class BlogPostController {
     public BlogPostListDTO getAllBriefBlogPostsDetail(@RequestParam(required = false) String query,
                                                       @RequestParam(required = false) Long categoryId,
                                                       @RequestParam(defaultValue = "0") int page,
-                                                      @RequestParam(defaultValue = "8") int size) {
+                                                      @RequestParam(defaultValue = "6") int size) {
 
         logger.info("GET: /open/blogposts/ retrieving all blog post details briefly");
 
